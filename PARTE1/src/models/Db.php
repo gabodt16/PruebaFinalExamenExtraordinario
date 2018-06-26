@@ -14,6 +14,10 @@ class Db{
 
     function __construct(){
         $this->conector = new mysqli($this->host, $this->usuario, $this->pass, $this->db);
+        if ($this->conector->connect_errno) {
+            $this->errorMsg="Fallo al conectar a MySQL: (" . $this->conector->connect_errno . ") " . $this->conector->connect_error;
+            $this->error=true;
+        }
     }
 
 
@@ -24,7 +28,7 @@ class Db{
     function realizarConsultas($consulta){
         return $this->conector->query($consulta);
     }
-
+    
 }
 
 ?>

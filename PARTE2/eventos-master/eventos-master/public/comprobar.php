@@ -4,9 +4,22 @@ use Daw\models\Evento;
 
 //Creamos un nevo objeto de para la insercion de datos contra la tabla evento
 $evento = new Evento();
+$mensaje="";
 
-//insertamos un nuevo Registro
-$evento->buscarAsistente($_POST["dni"]);
+//insertamos un nuevo Registro  or empty($_POST["dni"])
+if(isset($_POST["dni"])){
+    var_dump($_POST["dni"]);
+    if(empty($_POST["dni"])){
+        var_dump($_POST["dni"]);
+        $mensaje = "Error, la variable dni no se encuentra definida o está vacía";
+    }else{
+        var_dump($_POST["dni"]);
+        $mensaje= $evento->buscarAsistente($_POST["dni"]);
+        var_dump($mensaje);
+    }
+}else{
+    $mensaje = "Error, la variable dni no se encuentra definida o está vacía";
+}
 ?>
 <!DOCTYPE html>
 <html>
@@ -25,7 +38,7 @@ $evento->buscarAsistente($_POST["dni"]);
           </header>
           <div class="w3-container">
             <!--AQUI MOSTRAREMOS NUESTRO MENSAJE DE USUARIO QUE PUEDE PASAR O NO-->
-            <p>MENSAJE A SUSTITUIR</p>
+            <p><?=$mensaje?></p>
             <!-------------------------------------------------------------------->
           </div>
         </div>

@@ -13,7 +13,9 @@ class evento extends Db
 
   //Buscamos a un asistente
   public function buscarAsistente($dni){
-    $consulta="";
+    $consulta = "SELECT * FROM registro WHERE dni= " . $dni . "";
+    $buscarUsuario = parent::consulta($consulta);
+    return $buscarUsuario;
   }
 
 }

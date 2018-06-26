@@ -1,7 +1,6 @@
 <?php
     require_once __DIR__.'/../vendor/autoload.php';
-    use Daw\models\Table;
-    use Daw\models\Evento;
+    use Daw\models\Tabla;
 ?>
 <!DOCTYPE html>
 <html>
@@ -13,21 +12,36 @@
     <body>
         <?php
             //Ejemplo de uso de modelos
-            $tabla = new Table();
+            $tabla = new Tabla();
 
-            $evento = new Evento();
-            $listado = $evento->listarEventos();
+            /*$listado = $tabla->InsertarEquipos("eduardo", 8);
             var_dump ($listado->num_rows);
             foreach ($listado as $even){
-                echo "Nombre: " . $even['Nombre'] . "<br>";
+                echo "Nombre: " . $even['nombre'] . "<br>";
             }
-
-            
-
-
+*/
 
         ?>
+        
+        <h1>Crea Tu equipo</h1>
+       
+        <div class="formulario">
+           
+            <form action="pagina.php" method="post">
 
+                <label for="nombre">Nombre</label>
+                <input type="text" name="nombre" id="nombre" autofocus required>
+
+                <label for="participantes">Participantes</label>
+                <input type="number" max="5" min="0" name="participantes" id="participantes" required>
+                <br><br>
+
+                <input type="submit" value="Enviar">
+
+            </form>
+        </div>
+        
+        <a href="listado.php">Listado de equipos</a>
 
 
     </body>
